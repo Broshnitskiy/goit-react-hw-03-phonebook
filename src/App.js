@@ -3,6 +3,7 @@ import './App.css';
 import { ContactList } from './components/ContactList/ContactList';
 import { Filter } from './components/Filter/Filter';
 import { ContactForm } from './components/ContactForm/ContactForm';
+import { GlobalStyle } from './components/GlobalStyles';
 
 class App extends Component {
   state = {
@@ -43,21 +44,24 @@ class App extends Component {
     );
 
     return (
-      <section>
-        <h1>Phonebook</h1>
-        <ContactForm
-          contacts={this.state.contacts}
-          onSubmitContact={this.onSubmitContact}
-        />
-        <div>
-          <h2>Contacts</h2>
-          <Filter value={this.state.filter} handleChange={this.handleChange} />
-          <ContactList
-            contacts={findContacts}
-            onDeleteContact={this.deleteContact}
-          />
-        </div>
-      </section>
+      <>
+        <GlobalStyle />
+        <section>
+          <h1>Phonebook</h1>
+          <ContactForm onSubmitContact={this.onSubmitContact} />
+          <div>
+            <h2>Contacts</h2>
+            <Filter
+              value={this.state.filter}
+              handleChange={this.handleChange}
+            />
+            <ContactList
+              contacts={findContacts}
+              onDeleteContact={this.deleteContact}
+            />
+          </div>
+        </section>
+      </>
     );
   }
 }
