@@ -20,13 +20,14 @@ class App extends Component {
     this.setState({ filter: e.target.value });
   };
 
-  onSubmitContact = newContact => {
+  onSubmitContact = (newContact, resetInput) => {
     const arrayContactNames = this.state.contacts.map(contact => {
-      return contact.name;
+      return contact.name.toLocaleLowerCase();
     });
-    return arrayContactNames.includes(newContact.name)
+    arrayContactNames.includes(newContact.name.toLocaleLowerCase())
       ? alert(`${newContact.name} is already in contacts`)
       : this.setState(prevState => {
+          resetInput();
           return { contacts: [...prevState.contacts, newContact] };
         });
   };

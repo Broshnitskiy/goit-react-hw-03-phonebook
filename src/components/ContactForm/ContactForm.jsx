@@ -19,9 +19,7 @@ export class ContactForm extends Component {
       name: this.state.name,
       number: this.state.number,
     };
-    this.props.onSubmitContact(newContact);
-
-    this.resetInput();
+    this.props.onSubmitContact(newContact, this.resetInput);
   };
 
   resetInput = () => {
@@ -34,7 +32,7 @@ export class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} autoComplete="off">
         <label>
           Name
           <input
