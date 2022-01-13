@@ -47,8 +47,8 @@ class App extends Component {
     return (
       <>
         <GlobalStyle />
-        <section>
-          <h1>Phonebook</h1>
+        <section style={{ padding: '20px' }}>
+          <h1 style={{ marginBottom: '20px' }}>Phonebook</h1>
           <ContactForm onSubmitContact={this.onSubmitContact} />
           <div>
             <h2>Contacts</h2>
