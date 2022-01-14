@@ -21,10 +21,13 @@ class App extends Component {
   };
 
   onSubmitContact = (newContact, resetInput) => {
-    const arrayContactNames = this.state.contacts.map(contact => {
-      return contact.name.toLocaleLowerCase();
-    });
-    arrayContactNames.includes(newContact.name.toLocaleLowerCase())
+    const isExistContact = this.state.contacts.find(
+      contact =>
+        contact.name.toLocaleLowerCase() ===
+        newContact.name.toLocaleLowerCase(),
+    );
+
+    isExistContact
       ? alert(`${newContact.name} is already in contacts`)
       : this.setState(prevState => {
           resetInput();

@@ -15,10 +15,11 @@ export class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { name, number } = this.state;
     const newContact = {
       id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
+      name,
+      number,
     };
     this.props.onSubmitContact(newContact, this.resetInput);
   };
